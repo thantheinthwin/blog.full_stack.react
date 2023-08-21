@@ -1,13 +1,13 @@
 import { Container } from '@mui/material'
 import React, { useEffect } from 'react'
-import { Navbar } from '../components'
+import { Navbar, PostCard } from '../components'
 
 const Home = () => {
   return (
     <>
         <Navbar/>
         <Container maxWidth='false'>
-            Posts
+            <PostCard/>
         </Container>
     </>  
   )

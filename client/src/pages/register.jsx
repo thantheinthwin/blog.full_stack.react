@@ -78,7 +78,7 @@ const Register = () => {
     if (reason === 'clickaway') {
       return;
     }
-    if ( error == false ){
+    if ( error === false ){
       navigate("/", {replace: true});
     }
 
