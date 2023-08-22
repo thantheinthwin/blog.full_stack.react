@@ -1,14 +1,14 @@
-import { Container, Grid } from '@mui/material'
 import React, { useEffect } from 'react'
-import { Navbar, PostCard } from '../components'
+import { Navbar} from '../components'
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 import { validateUser } from '../api/auth';
-import { useNavigate } from 'react-router-dom';
-import { getAllPosts } from '../api/post';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import AllPosts from './allPosts';
+import MyPosts from './myPosts';
 
 const Home = () => {
-  const [{user, allPosts}, dispatch] = useStateValue();
+  const [{user}, dispatch] = useStateValue();
   const navigate = useNavigate();
 
   // JWT Token validation stored in cookies
@@ -30,33 +30,27 @@ const Home = () => {
     }
   },[])
 
-  useEffect(()=>{
-    if(!allPosts){
-      getAllPosts()
-      .then(res => {
-        dispatch({
-          type: actionType.SET_ALL_POST,
-          allPosts: res
-        })
-      })
+  const routes = [
+    {
+      path: '/',
+      element: <AllPosts/>
+    },
+    {
+      path: '/myposts',
+      element: <MyPosts/>
     }
-  }, [allPosts])
+  ]
 
   return (
     <>
         <Navbar user={user} dispatch={dispatch}/>
-        <Container maxWidth='xl' sx={{bgcolor: 'grey.200', py: 2}}>
-          <Grid container spacing={2}>
-            {
-              allPosts &&
-              allPosts.map((post, i) => (
-                <Grid item>
-                  <PostCard title={post.title} content={post.content} key={i}/>                  
-                </Grid>
-              ))
-            }
-          </Grid>
-        </Container>
+        <Routes>
+          {
+            routes.map((route, i) => (
+              <Route key={i} path={route.path} element={route.element}/>
+            ))
+          }
+        </Routes>
     </>  
   )
 }

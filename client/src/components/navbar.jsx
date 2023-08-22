@@ -67,7 +67,9 @@ const Navbar = ({user, dispatch}) => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={()=>{
+                navigate('/home/myposts', {replace: true})
+            }}>
             <ListItemIcon>
                 <FeedIcon/>
             </ListItemIcon> 
