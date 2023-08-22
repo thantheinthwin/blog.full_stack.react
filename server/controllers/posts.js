@@ -21,7 +21,22 @@ export const getPost = (req, res) => {
 }
 
 export const addPost = (req, res) => {
-    res.json("add post")
+    if(req.body.title === '' || req.body.content === ''){
+        return res.status(400).json('Insufficient Input')
+    }
+    else{
+        const q = "INSERT INTO posts (`title`, `content`, `user_id`) VALUES (?)"
+        const values = [
+            req.body.title,
+            req.body.content,
+            req.body.user_id
+        ]
+
+        db.query(q, [values], (err, data) => {
+            if(err) return res.json(err);
+            return res.status(200).json("Post added successfully")
+        })
+    }
 }
 
 export const deletePost = (req, res) => {
