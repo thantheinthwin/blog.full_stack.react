@@ -8,7 +8,7 @@ const PostCardsContainer = ({Posts, user}) => {
     {
         Posts &&
         Posts.map((post, i) => (
-        <Grid item xs={3} key={i}>
+        <Grid item xs={4} key={i}>
             <PostCard post={post} user={user}/>                  
         </Grid>
         ))
