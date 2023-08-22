@@ -69,3 +69,12 @@ export const logout = (req, res) => {
         secure: true
     }).status(200).json("User have been logged out")
 }
+
+export const validateUser = (req, res) => {
+    if(req.cookies["access_token"]){
+        return res.status(200).json(JSON.stringify(jwt.decode(req.cookies["access_token"])))
+    }
+    else {
+        return res.status(400).json("Token not exists")
+    }
+}

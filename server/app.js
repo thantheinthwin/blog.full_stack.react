@@ -25,6 +25,10 @@ app.use('/api/users', userRoutes)
 import auth from './routes/auth.js'
 app.use('/api/auth', auth)
 
+// app.get('/myapi', function(req, res) {
+//     console.log(req.cookies['access_token']);
+//  })
+
 // db.connect((err) => {
 //     if(err) throw err;
 //     console.log("Connected !");
