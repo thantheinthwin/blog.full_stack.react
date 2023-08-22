@@ -8,7 +8,6 @@ export const getPosts = (req, res) => {
         
         return res.status(200).json(data);
     })
-    res.json("get posts")
 }
 
 export const getPost = (req, res) => {
