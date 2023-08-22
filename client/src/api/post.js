@@ -17,3 +17,12 @@ export const addPost = async (inputData) => {
         throw error.response.data;
     }
 }
+
+export const deletePost = async (id) => {
+    try {
+        const res = await axios.delete(`/posts/${id}`)
+        return res.data;
+    } catch (error) {
+        throw error.response.data;
+    }
+}

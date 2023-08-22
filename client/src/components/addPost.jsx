@@ -64,21 +64,21 @@ const AddPost = () => {
         <Button className='w-fit justify-self-end' variant='outlined' onClick={handleSubmit}>Upload</Button>
         
         {/* Feedback Message For Users */}
-          {
-            error 
-            ? 
-            <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
-              <Alert onClose={handleCloseSnackBar} severity="error" sx={{ width: '100%' }}>
-                {message}
-              </Alert>
-            </Snackbar>
-            :
-            <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
-              <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
-                {message}
-              </Alert>
-            </Snackbar>
-          }
+        {
+          error 
+          ? 
+          <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+            <Alert onClose={handleCloseSnackBar} severity="error" sx={{ width: '100%' }}>
+              {message}
+            </Alert>
+          </Snackbar>
+          :
+          <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+            <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
+              {message}
+            </Alert>
+          </Snackbar>
+        }
     </Box>
   )
 }
