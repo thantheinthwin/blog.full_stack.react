@@ -2,13 +2,11 @@ import { Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar
 import { Logout } from '@mui/icons-material'
 import FeedIcon from '@mui/icons-material/Feed';
 import React, { useState } from 'react'
-import { useStateValue } from '../context/StateProvider';
 import { logout } from '../api/auth';
 import { actionType } from '../context/reducer';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
-  const [{user}, dispatch] = useStateValue();
+const Navbar = ({user, dispatch}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 

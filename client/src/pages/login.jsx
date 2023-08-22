@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Alert, Box, Divider, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Snackbar, TextField, Typography } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
@@ -72,8 +72,9 @@ const Login = () => {
       .then(res => {
         dispatch({
           type: actionType.SET_USER,
-          user: res
+          user: JSON.parse(res)?.user
         })
+        navigate('/home', {replace: true});
       })
     }
   },[])

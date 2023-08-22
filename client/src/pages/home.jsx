@@ -22,7 +22,7 @@ const Home = () => {
 
       // reroute the user back to login if not logged in
       .catch(err =>{
-        console.log(err);
+        // console.log(err);
         navigate("/", {replace: true})
       })
     }
@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-        <Navbar/>
+        <Navbar user={user} dispatch={dispatch}/>
         <Container maxWidth='false'>
             <PostCard/>
         </Container>
