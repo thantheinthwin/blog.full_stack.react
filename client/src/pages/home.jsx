@@ -9,26 +9,6 @@ import MyPosts from './myPosts';
 
 const Home = () => {
   const [{user}, dispatch] = useStateValue();
-  const navigate = useNavigate();
-
-  // JWT Token validation stored in cookies
-  useEffect(()=>{
-    if(!user){
-      validateUser()
-      .then(res => {
-        dispatch({
-          type: actionType.SET_USER,
-          user: JSON.parse(res)?.user
-        })
-      })
-
-      // reroute the user back to login if not logged in
-      .catch(err =>{
-        // console.log(err);
-        navigate("/", {replace: true})
-      })
-    }
-  },[])
 
   const routes = [
     {

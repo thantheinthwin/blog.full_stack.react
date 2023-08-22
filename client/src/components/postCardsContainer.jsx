@@ -9,7 +9,7 @@ const PostCardsContainer = ({Posts, user}) => {
         Posts &&
         Posts.map((post, i) => (
         <Grid item xs={3} key={i}>
-            <PostCard title={post.title} content={post.content}/>                  
+            <PostCard post={post} user={user}/>                  
         </Grid>
         ))
     }

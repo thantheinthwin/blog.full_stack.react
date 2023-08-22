@@ -215,7 +215,8 @@ const Register = () => {
             </AnimatePresence>
           </FormControl>
           <Divider sx={{ my: 2 }} />
-
+          
+          {/* Feedback Message For Users */}
           {
             error 
             ? 

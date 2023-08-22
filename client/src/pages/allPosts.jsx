@@ -31,13 +31,13 @@ const AllPosts = () => {
             })
           })
           .catch(err => {
-            return null;
+            navigate("/", {replace: true})
           })
         }
       }, [])
 
   return (
-    <Container maxWidth='xl' sx={{bgcolor: 'grey.200', py: 2}}>
+    <Container maxWidth='xl' sx={{mt: 2, py: 2, border: 1, borderRadius: 2, borderColor: 'grey.300'}} className='shadow-inner'>
       <PostCardsContainer Posts={allPosts} user={user}/>
     </Container>
   )

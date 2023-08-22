@@ -8,3 +8,12 @@ export const getAllPosts = async () => {
         return console.error(error);
     }
 }
+
+export const addPost = async (inputData) => {
+    try {
+        const res = await axios.post('/posts/', inputData)
+        return res.data;
+    } catch (error) {
+        throw error.response.data;
+    }
+}

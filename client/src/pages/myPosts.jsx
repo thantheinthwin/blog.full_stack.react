@@ -2,7 +2,7 @@ import { Box, Container, Grid, ToggleButton, ToggleButtonGroup, Typography } fro
 import React, { useEffect, useState } from 'react'
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import PostAddOutlinedIcon from '@mui/icons-material/PostAddOutlined';
-import { PostCardsContainer } from '../components';
+import { AddPost, PostCardsContainer } from '../components';
 import { useStateValue } from '../context/StateProvider';
 import { getAllPosts } from '../api/post';
 import { actionType } from '../context/reducer';
@@ -74,7 +74,7 @@ const MyPosts = () => {
           {
             tab == 'myPosts' 
             ? <PostCardsContainer Posts={myPosts} user={user}/>
-            : <Typography className=''>Add Post</Typography>
+            : <AddPost/>
           }
         </Grid>
       </Box>
