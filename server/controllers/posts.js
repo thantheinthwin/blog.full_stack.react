@@ -11,7 +11,13 @@ export const getPosts = (req, res) => {
 }
 
 export const getPost = (req, res) => {
-    res.json("get post")
+    const q = "SELECT * FROM  posts WHERE id ?";
+
+    db.query(q, [req.param.id], (err, data) => {
+        if(err) return res.json(err)
+
+        return res.status(200).json(data);
+    })
 }
 
 export const addPost = (req, res) => {
