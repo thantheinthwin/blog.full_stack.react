@@ -27,3 +27,12 @@ export const logout = async () => {
         return null;
     }
 }
+
+export const validateUser = async () => {
+    try {
+        const res = await axios.get('/auth/validateUser')
+        return res.data;
+    } catch (error) {
+        return console.error(error.response.data);
+    }
+}

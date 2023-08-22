@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Alert, Box, Divider, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Snackbar, TextField, Typography } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { BlackButton } from '../components';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../api/auth';
+import { login, validateUser } from '../api/auth';
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 
@@ -65,6 +65,18 @@ const Login = () => {
 
     setSnackBarOpen(false);
   };
+
+  useEffect(() => {
+    if(!user){
+      validateUser()
+      .then(res => {
+        dispatch({
+          type: actionType.SET_USER,
+          user: res
+        })
+      })
+    }
+  },[])
 
   return (
     <Container maxWidth="xs">
