@@ -40,7 +40,11 @@ export const addPost = (req, res) => {
 }
 
 export const deletePost = (req, res) => {
-    res.json("delete post")
+    const q = "DELETE FROM posts WHERE id = ?"
+    db.query(q, req.params.id, (err, data) => {
+        if(err) return res.json(err);
+        return res.status(200).json("Post deleted successfully")
+    })
 }
 
 export const updatePost = (req, res) => {
