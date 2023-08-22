@@ -22,14 +22,14 @@ const Navbar = ({user, dispatch}) => {
 
   return (
     <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} sx={{px: 2}} className="shadow">
-        <Typography display={'inline'} variant='h3'>Pandora</Typography>
+        <Typography className='cursor-pointer' py={1} display={'inline'} variant='h3' onClick={()=>{navigate('/home')}}><span className='px-1 text-6xl text-white bg-black rounded'>P</span>andora</Typography>
         <Toolbar title="Account Setting">
             <IconButton 
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2 }}
             >
-                <Avatar sx={{ width: 32, height: 32 }}>{user?.username.charAt(0).toUpperCase()}</Avatar>
+                <Avatar sx={{ width: 42, height: 42 }}>{user?.username.charAt(0).toUpperCase()}</Avatar>
             </IconButton>
         </Toolbar>
         <Menu
@@ -78,13 +78,13 @@ const Navbar = ({user, dispatch}) => {
             <Divider />
             <MenuItem onClick={()=>{
                 logout()
-                .then(
+                .then(() => {
                     dispatch({
                         type: actionType.SET_USER,
                         user: null
                     })
-                )
-                navigate("/", {replace: true});
+                    navigate("/", {replace: true});
+                })
             }}>
             <ListItemIcon>
                 <Logout fontSize="small" />

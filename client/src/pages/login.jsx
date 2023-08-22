@@ -42,7 +42,7 @@ const Login = () => {
           user: res
         })
       })
-      .then(navigate("/home", {replace: true}))
+      navigate("/home", {replace: true})
     } catch (error) {
       handleOpenSnackBar();
       setErrorMessage(error);
@@ -75,6 +75,9 @@ const Login = () => {
           user: JSON.parse(res)?.user
         })
         navigate('/home', {replace: true});
+      })
+      .catch(err => {
+        return null;
       })
     }
   },[])
