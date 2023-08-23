@@ -11,9 +11,9 @@ export const getPosts = (req, res) => {
 }
 
 export const getPost = (req, res) => {
-    const q = "SELECT * FROM  posts WHERE id ?";
+    const q = "SELECT posts.title, posts.content, users.id, users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = ?";
 
-    db.query(q, [req.param.id], (err, data) => {
+    db.query(q, [req.params.id], (err, data) => {
         if(err) return res.json(err)
 
         return res.status(200).json(data);
