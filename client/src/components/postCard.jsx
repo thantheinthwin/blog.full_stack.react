@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Divider, Typography } from '@mui/material'
+import { Button, Card, CardActionArea, CardContent, Divider, Typography } from '@mui/material'
 import React from 'react'
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import PostDetails from './postDetails';
@@ -17,12 +17,13 @@ const PostCard = ({post, user}) => {
   };
   
   return (
+    <CardActionArea>
     <Card sx={{ width: 1, height: 1}}>
       <CardContent sx={{display: 'grid', gap: 1}}>
         <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'space-between'}}>
           {post.title}
           {
-            (user.id == post.user_id && location.some(path => path == 'myposts')) && <Button onClick={handleClickOpen} sx={{color: 'common.black'}}><MoreHorizOutlinedIcon/></Button> 
+            (user && user.id == post.user_id && location.some(path => path == 'myposts')) && <Button onClick={handleClickOpen} sx={{color: 'common.black'}}><MoreHorizOutlinedIcon/></Button> 
           }
         </Typography>
         <Divider/>
@@ -32,6 +33,7 @@ const PostCard = ({post, user}) => {
       </CardContent>
       <PostDetails post={post} open={open} handleClose={handleClose}/>
     </Card>
+    </CardActionArea>
   )
 }
 

@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Navbar} from '../components'
-import { useStateValue } from '../context/StateProvider';
-import { actionType } from '../context/reducer';
-import { validateUser } from '../api/auth';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AllPosts from './allPosts';
 import MyPosts from './myPosts';
 
 const Home = () => {
-  const [{user}, dispatch] = useStateValue();
-
-  const routes = [
+    const routes = [
     {
       path: '/',
       element: <AllPosts/>
@@ -23,7 +18,7 @@ const Home = () => {
 
   return (
     <>
-        <Navbar user={user} dispatch={dispatch}/>
+        <Navbar/>
         <Routes>
           {
             routes.map((route, i) => (

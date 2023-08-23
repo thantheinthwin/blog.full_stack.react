@@ -79,7 +79,7 @@ const Register = () => {
       return;
     }
     if ( error === false ){
-      navigate("/", {replace: true});
+      navigate("/login", {replace: true});
     }
 
     setSnackBarOpen(false);

@@ -5,8 +5,12 @@ import React, { useState } from 'react'
 import { logout } from '../api/auth';
 import { actionType } from '../context/reducer';
 import { useNavigate } from 'react-router-dom';
+import { useStateValue } from '../context/StateProvider';
+import BlackButton from './BlackButton';
 
-const Navbar = ({user, dispatch}) => {
+const Navbar = () => {
+    const [{user}, dispatch] = useStateValue();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -23,15 +27,24 @@ const Navbar = ({user, dispatch}) => {
   return (
     <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} sx={{px: 2}} className="shadow">
         <Typography className='cursor-pointer' py={1} display={'inline'} variant='h3' onClick={()=>{navigate('/home')}}><span className='px-1 text-6xl text-white bg-black rounded'>P</span>andora</Typography>
-        <Toolbar title="Account Setting">
-            <IconButton 
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-            >
-                <Avatar sx={{ width: 42, height: 42 }}>{user?.username.charAt(0).toUpperCase()}</Avatar>
-            </IconButton>
-        </Toolbar>
+        {
+            user
+            ?
+            <Toolbar title="Account Setting">
+                <IconButton 
+                    onClick={handleClick}
+                    size="small"
+                    sx={{ ml: 2 }}
+                >
+                    <Avatar sx={{ width: 42, height: 42 }}>{user?.username.charAt(0).toUpperCase()}</Avatar>
+                </IconButton>
+            </Toolbar>
+            :
+            <Box sx={{display: 'flex', gap: 1}}>
+                <BlackButton label={"Login"} onClick={()=>{navigate('/login', {replace: true})}}></BlackButton>
+                <BlackButton label={"Sign Up"} onClick={()=>{navigate('/register', {replace: true})}}></BlackButton>
+            </Box>
+        }
         <Menu
             anchorEl={anchorEl}
             id="account-menu"
@@ -68,7 +81,7 @@ const Navbar = ({user, dispatch}) => {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
             <MenuItem onClick={()=>{
-                navigate('/home/myposts', {replace: true})
+                navigate('/myposts', {replace: true})
             }}>
             <ListItemIcon>
                 <FeedIcon/>
