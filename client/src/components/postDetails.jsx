@@ -116,11 +116,13 @@ const PostDetails = () => {
             <Box display={'flex'} justifyContent={'space-between'} gap={1}>
               <Typography variant='h3'>{postDetails[0].title}</Typography>
               {
-                user.id == postDetails[0].id &&
+                user &&
+                (user.id == postDetails[0].id &&
                 <Box sx={{display: 'flex', alignItems: 'end', gap: 1}}>
                   <Button variant='outlined' className='h-fit w-fit' color='error' onClick={handleOpenConfirmDialog}>Delete</Button>
                   <Button variant='outlined' className='h-fit w-fit' onClick={handleEdit}>Edit</Button>
                 </Box>
+                )
               }
             </Box>
             <Divider/>
