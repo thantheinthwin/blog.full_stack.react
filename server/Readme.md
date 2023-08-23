@@ -1,1 +1,0 @@
-start your mysql locally - "net start MYSQL80 | net stop MYSQL80" 
