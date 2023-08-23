@@ -35,3 +35,12 @@ export const deletePost = async (id) => {
         throw error.response.data;
     }
 }
+
+export const updatePost = async (inputData, id) => {
+    try {
+        const res = await axios.put(`/posts/${id}`, inputData)
+        return res.data;
+    } catch (error) {
+        return null;
+    }
+}

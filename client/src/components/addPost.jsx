@@ -67,13 +67,13 @@ const AddPost = () => {
         {
           error 
           ? 
-          <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+          <Snackbar open={snackBarOpen} autoHideDuration={1500} onClose={handleCloseSnackBar}>
             <Alert onClose={handleCloseSnackBar} severity="error" sx={{ width: '100%' }}>
               {message}
             </Alert>
           </Snackbar>
           :
-          <Snackbar open={snackBarOpen} autoHideDuration={3000} onClose={handleCloseSnackBar}>
+          <Snackbar open={snackBarOpen} autoHideDuration={1500} onClose={handleCloseSnackBar}>
             <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
               {message}
             </Alert>

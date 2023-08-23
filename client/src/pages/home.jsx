@@ -1,9 +1,8 @@
 import React from 'react'
-import { Navbar} from '../components'
+import { Navbar, PostDetails} from '../components'
 import { Route, Routes} from 'react-router-dom';
 import AllPosts from './allPosts';
 import MyPosts from './myPosts';
-import PostDetails from '../components/postDetails';
 
 const Home = () => {
   const routes = [

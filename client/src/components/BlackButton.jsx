@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
 
-const BlackButton = ({label, onClick}) => {
+const BlackButton = ({label, onClick, children}) => {
   return (
     <Button 
     onClick={onClick}
@@ -13,7 +13,7 @@ const BlackButton = ({label, onClick}) => {
         color: 'common.white',
         bgcolor: 'common.black'
         }
-    }}>{label}</Button>
+    }}>{children}&nbsp;{label}</Button>
   )
 }
 
