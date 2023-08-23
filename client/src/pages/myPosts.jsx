@@ -40,7 +40,7 @@ const MyPosts = () => {
         return null;
       })
     }
-  }, [])
+  }, [allPosts])
 
 
   useEffect(()=>{

@@ -2,9 +2,13 @@ import { Alert, Button, Dialog, DialogContent, DialogTitle, Snackbar, Typography
 import React, { useState } from 'react'
 import { deletePost } from '../api/post';
 import { useNavigate } from 'react-router-dom';
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 const DeleteConfirmDialog = (props) => {
     const {id, handleClose, open} = props;
+
+    const [{allPosts}, dispatch] = useStateValue();
 
     const [error, setError] = useState(false);
     const [message, setMessage] = useState("");
@@ -22,6 +26,12 @@ const DeleteConfirmDialog = (props) => {
             handleOpenSnackBar();
             setMessage(e);
         })
+        .finally(()=>{
+            dispatch({
+                type: actionType.SET_ALL_POST,
+                allPosts: null
+            })
+        })
     }
 
     // Message
@@ -36,7 +46,7 @@ const DeleteConfirmDialog = (props) => {
         return;
         }
         if ( error === false ){
-            navigate(0, {replace: true});
+            navigate('/myposts', {replace: true});
         }
 
         setSnackBarOpen(false);
