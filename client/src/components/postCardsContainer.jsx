@@ -4,7 +4,7 @@ import PostCard from './postCard'
 
 const PostCardsContainer = ({Posts, user}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPage, setTotalPage] = useState('');
+  const [totalPage, setTotalPage] = useState(null);
   const postsPerPage = 6;
 
   const handleChange = (err, page) => {
@@ -13,20 +13,15 @@ const PostCardsContainer = ({Posts, user}) => {
 
   useEffect(()=>{
     if(Posts){
-      if(Posts.length/postsPerPage < 1){
-        setTotalPage(1);
-      }
-      else{
-        setTotalPage(Posts.length/postsPerPage)
-      }
+      setTotalPage(Math.ceil(Posts.length / postsPerPage))
     }
-  },[])
+  },[Posts])
 
   return (
     <>
     <Grid container spacing={2}>
     {
-        Posts &&
+        Posts && (
         Posts
         .slice((currentPage-1)*postsPerPage, (currentPage-1)*postsPerPage+postsPerPage)
         .map((post, i) => (
@@ -34,10 +29,11 @@ const PostCardsContainer = ({Posts, user}) => {
             <PostCard post={post} user={user}/>                  
         </Grid>
         ))
+        )
     }
     </Grid>
     {
-      Posts && totalPage &&
+      totalPage &&
       <Box sx={{mt: 2}}>
         <Pagination count={totalPage} shape="rounded" onChange={handleChange}/>
       </Box>
