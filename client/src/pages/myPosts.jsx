@@ -45,7 +45,7 @@ const MyPosts = () => {
 
   useEffect(()=>{
     if(allPosts && user){
-      setMyPosts(allPosts.filter(post => post.user_id == user.id))
+      setMyPosts(allPosts.filter(post => post.user_id === user.id))
     }
   },[allPosts, user])
 
@@ -72,7 +72,7 @@ const MyPosts = () => {
         </Box>
         <Grid flexGrow={1} border={1} borderColor={'grey.300'} borderRadius={1} p={2} className='shadow-inner'>
           {
-            tab == 'myPosts' 
+            tab === 'myPosts' 
             ? <PostCardsContainer Posts={myPosts} user={user}/>
             : <AddPost/>
           }

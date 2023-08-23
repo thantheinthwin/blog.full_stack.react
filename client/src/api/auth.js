@@ -33,6 +33,6 @@ export const validateUser = async () => {
         const res = await axios.get('/auth/validateUser')
         return res.data;
     } catch (error) {
-        return console.error(error.response.data);
+        return error.response.data;
     }
 }

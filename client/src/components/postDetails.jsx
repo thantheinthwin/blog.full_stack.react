@@ -117,7 +117,7 @@ const PostDetails = () => {
               <Typography variant='h3'>{postDetails[0].title}</Typography>
               {
                 user &&
-                (user.id == postDetails[0].id &&
+                (user.id === postDetails[0].id &&
                 <Box sx={{display: 'flex', alignItems: 'end', gap: 1}}>
                   <Button variant='outlined' className='h-fit w-fit' color='error' onClick={handleOpenConfirmDialog}>Delete</Button>
                   <Button variant='outlined' className='h-fit w-fit' onClick={handleEdit}>Edit</Button>
