@@ -48,5 +48,9 @@ export const deletePost = (req, res) => {
 }
 
 export const updatePost = (req, res) => {
-    res.json("update post")
+    const q = "UPDATE posts SET title=?, content=? WHERE id=?"
+    db.query(q, [req.body.title, req.body.content, req.params.id], (err, data) => {
+        if(err) return res.json(err);
+        return res.status(200).json("Post updated successfully")
+    })
 }
