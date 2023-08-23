@@ -9,6 +9,15 @@ export const getAllPosts = async () => {
     }
 }
 
+export const getPost = async (postId) => {
+    try {
+        const res = await axios.get(`/posts/${postId}`)
+        return res.data;
+    } catch (error) {
+        return console.error(error);
+    }
+}
+
 export const addPost = async (inputData) => {
     try {
         const res = await axios.post('/posts/', inputData)

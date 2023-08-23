@@ -1,11 +1,12 @@
 import React from 'react'
 import { Navbar} from '../components'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import AllPosts from './allPosts';
 import MyPosts from './myPosts';
+import PostDetails from '../components/postDetails';
 
 const Home = () => {
-    const routes = [
+  const routes = [
     {
       path: '/',
       element: <AllPosts/>
@@ -13,6 +14,10 @@ const Home = () => {
     {
       path: '/myposts',
       element: <MyPosts/>
+    },
+    {
+      path: '/post/:postId',
+      element: <PostDetails/>
     }
   ]
 

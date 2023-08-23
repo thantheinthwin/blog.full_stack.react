@@ -38,7 +38,7 @@ const AllPosts = () => {
 
   return (
     <Container maxWidth='xl' sx={{mt: 2, py: 2, border: 1, borderRadius: 2, borderColor: 'grey.300'}} className='shadow-inner'>
-      <PostCardsContainer Posts={allPosts} user={user}/>
+      <PostCardsContainer Posts={allPosts}/>
     </Container>
   )
 }

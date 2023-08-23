@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} sx={{px: 2}} className="shadow">
-        <Typography className='cursor-pointer' py={1} display={'inline'} variant='h3' onClick={()=>{navigate('/home')}}><span className='px-1 text-6xl text-white bg-black rounded'>P</span>andora</Typography>
+        <Typography className='cursor-pointer' py={1} display={'inline'} variant='h3' onClick={()=>{navigate('/')}}><span className='px-1 text-6xl text-white bg-black rounded'>P</span>andora</Typography>
         {
             user
             ?
